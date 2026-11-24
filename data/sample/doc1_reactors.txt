@@ -1,0 +1,4 @@
+Chemical reactors convert feed streams into products. The plug flow reactor
+assumes no axial mixing, while the continuous stirred tank reactor assumes
+perfect mixing. Reactor design balances conversion, selectivity, pressure
+drop and heat removal, and kinetic models decide the required volume.

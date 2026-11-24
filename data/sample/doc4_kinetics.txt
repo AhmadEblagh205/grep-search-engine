@@ -1,0 +1,4 @@
+Reaction kinetics describes how fast reactions proceed. Rate constants
+follow the Arrhenius equation, increasing exponentially with temperature.
+Kinetic parameters are estimated by fitting models to experimental data,
+and model discrimination selects between candidate kinetic models.

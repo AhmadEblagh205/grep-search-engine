@@ -1,0 +1,4 @@
+Python favours readable code. Dictionaries give constant time lookups and
+are the natural structure for an inverted index. Generators process large
+files lazily, and the standard library covers file handling, regular
+expressions and testing without external dependencies.

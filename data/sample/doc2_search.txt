@@ -1,0 +1,4 @@
+A search engine matches queries against an index of documents. An inverted
+index maps each term to the documents containing it, so queries touch only
+relevant documents instead of scanning everything. Ranking orders results
+by relevance, commonly using term frequency and inverse document frequency.

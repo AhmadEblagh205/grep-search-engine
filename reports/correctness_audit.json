@@ -1,0 +1,11 @@
+{
+  "seed": 20260917,
+  "worlds": 100,
+  "queries_per_world": 20,
+  "boolean_reference_checks": 2000,
+  "phrase_reference_checks": 2000,
+  "ranking_insertion_order_checks": 2000,
+  "roundtrip_query_triplets": 500,
+  "all_checks_passed": true,
+  "scope_note": "Generated-corpus correctness/reproducibility audit only; no human relevance judgements, web-scale latency or semantic-retrieval claim."
+}
