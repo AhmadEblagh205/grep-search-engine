@@ -90,3 +90,13 @@ This is a **correctness/reproducibility audit**. It does not contain human relev
 - raw document text is retained for snippets;
 - JSON persistence trades safety/auditability for larger files than a compressed binary index;
 - no adversarial resource-exhaustion hardening.
+
+## Notes moved from the README
+
+- Correctness bug found in the audit: in the previous rebuild, `add("doc", new_text)` overwrote the stored text but did not remove the document from the old term and position postings. After `add("doc", "reactor design reactor")` followed by `add("doc", "kinetic model only")`, a search could still return `doc` for `reactor` and for the phrase `reactor design`. Version 0.4 gives `add()` replacement semantics, removing all old postings before indexing, and a regression test covers it.
+- Phrase search uses token positions. For terms q0 to qk, a phrase starts at position p only when term qi occurs at p+i for every i. The semantics are checked against a brute-force reference implementation.
+- Version 0.3 saved the index with `pickle`, and loading an untrusted pickle can execute arbitrary code. Version 0.4 uses a versioned JSON format, validates document lengths and positional postings before accepting an index, and writes through a temporary file followed by an atomic replace. This is not a claim that hostile JSON is safe at production scale.
+- There are no human relevance judgements, so BM25 is not claimed to be more relevant than TF-IDF on the four sample files. Ties are broken by document name.
+- A save/load triplet checks Boolean, phrase and ranked output after restoring the index, so the 500 triplets cover 1,500 restored outputs.
+- Test counts: the original audited archive had 10 passing tests (5 coursework and 5 rebuild). Version 0.4 has 22 (5 coursework and 17 rebuild and audit).
+- Possible extensions: a relevance-labelled evaluation set (Precision@k, MRR, nDCG), Unicode-aware preprocessing, field weighting, and profiling and compression on a larger corpus.
